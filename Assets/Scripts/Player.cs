@@ -5,36 +5,78 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private GameInput gameInput;
+    private float playerRadius = 0.7f;
+    private float playerHeight = 2f;
+    private float interactDistance = 2f;
     private bool isWalking = false;
+    private Vector3 lastInteractionDir;
+    
+    
+    
     private void Update()
     {
-        Vector2 direction = Vector2.zero;
-        if (Input.GetKey(KeyCode.W))
+        HandleMovement();
+        HandleInteractions();
+
+    }
+
+    private void HandleInteractions()
+    {
+        Vector3 moveDir = CalcMoveDir();
+        if(moveDir!= Vector3.zero)
         {
-            direction.y = +1;
+            lastInteractionDir = moveDir;
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            direction.x = -1;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            direction.y = -1;
-        } 
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction.x = +1;
-        }
-        direction= direction.normalized;
-        Vector3 moveDir = new Vector3(direction.x, 0f, direction.y) * (Time.deltaTime * speed);
-        transform.forward = Vector3.Slerp( transform.forward ,moveDir, Time.deltaTime * rotationSpeed); 
-        transform.position += moveDir;
-        isWalking = moveDir != Vector3.zero;
+      Physics.Raycast(transform.position, lastInteractionDir,out RaycastHit raycastHit,  interactDistance);
     }
     
-    
-    public bool IsWalking()
+    public bool IsWalking() 
     {
         return isWalking;   
     }
+    private void HandleMovement()
+    {
+        Vector3 moveDir = CalcMoveDir();
+        float moveDistance =  (Time.deltaTime * speed);
+        bool canMove = !Physics.CapsuleCast(transform.position,transform.position +Vector3.up * playerHeight,playerRadius,  moveDir, moveDistance);
+
+        if (!canMove)
+        {
+            Vector3 moveDirX = new Vector3( moveDir.x, 0f, 0f).normalized;
+            canMove = !Physics.CapsuleCast(transform.position,transform.position +Vector3.up * playerHeight,playerRadius,  moveDirX, moveDistance);
+            if (canMove)
+            {
+                moveDir = moveDirX;
+            }
+            else
+            {
+                Vector3 moveDirZ = new Vector3( 0f, 0f, moveDir.z).normalized;
+                canMove = !Physics.CapsuleCast(transform.position,transform.position +Vector3.up * playerHeight,playerRadius,  moveDirZ, moveDistance);
+                if (canMove)
+                {
+                    moveDir = moveDirZ;
+                }
+                else
+                {
+                    //cant move at any direction
+                }
+            }
+        }
+
+        if (canMove)
+        {
+            transform.position += moveDir * moveDistance;
+        }
+        
+        transform.forward = Vector3.Slerp( transform.forward ,moveDir, Time.deltaTime * rotationSpeed); 
+        isWalking = moveDir != Vector3.zero;
+    }
+    
+    private Vector3 CalcMoveDir()
+    {
+        Vector2 direction = gameInput.GetMovementVectorNormalized();
+        return new Vector3(direction.x, 0f, direction.y);
+    }   
 }
+
