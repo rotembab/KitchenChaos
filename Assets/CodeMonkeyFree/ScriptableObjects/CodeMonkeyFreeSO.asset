@@ -18,7 +18,7 @@ MonoBehaviour:
   lastUpdateResponse:
     version: 1.00
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1739354915
+  checkedLastUpdateTimestamp: 1739362105
   lastQOTDResponse:
     questionId: 150
     questionText: Can you modify transform.forward directly to rotate a transform?
@@ -27,18 +27,18 @@ MonoBehaviour:
     answerC: 
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1739354915
+  lastQotdTimestamp: 1739362105
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/syntySaleFeb25.png
     topText: Get AWESOME Low Poly Assets 70% OFF! Every theme imaginable!
     topLink: syntystore
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1739354915
+  lastDynamicHeaderTimestamp: 1739362105
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/tictactoenfefree">I just published my latest
       FREE course! Click here!</a>
-  websiteLatestMessageTimestamp: 1739354915
+  websiteLatestMessageTimestamp: 1739362105
   websiteLatestVideos:
     videos:
     - youTubeId: trLMR5aH0eQ
@@ -50,4 +50,4 @@ MonoBehaviour:
     - youTubeId: -3EVvJ8kr1U
       title: Learn Netcode for Entities (FREE Course, SUPER FAST Multiplayer with
         Unity DOTS)
-  websiteLatestVideosTimestamp: 1739354915
+  websiteLatestVideosTimestamp: 1739362105
