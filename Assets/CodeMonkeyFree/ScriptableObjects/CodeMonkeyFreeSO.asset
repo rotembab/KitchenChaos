@@ -14,33 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.00
   subtype: kitchenchaos
-  lastShownTimestamp: 1739103430
+  lastShownTimestamp: 1739296853
   lastUpdateResponse:
     version: 1.00
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1739103430
+  checkedLastUpdateTimestamp: 1739350977
   lastQOTDResponse:
-    questionId: 149
-    questionText: Which namespace do we need to use File.WriteAllText()?
-    answerA: using System;
-    answerB: using UnityEngine;
-    answerC: using System.IO;
-    answerD: using UnityEngine.UI;
+    questionId: 150
+    questionText: Can you modify transform.forward directly to rotate a transform?
+    answerA: Yes
+    answerB: No
+    answerC: 
+    answerD: 
     answerE: 
-  lastQotdTimestamp: 1739103430
+  lastQotdTimestamp: 1739350977
   lastDynamicHeaderResponse:
-    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/Gif_FreeCourses.gif
-    topText: Learn Unity and C# with my Complete FREE Courses!
-    topLink: freecourses
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/syntySaleFeb25.png
+    topText: Get AWESOME Low Poly Assets 70% OFF! Every theme imaginable!
+    topLink: syntystore
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1739103430
+  lastDynamicHeaderTimestamp: 1739350977
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/tictactoenfefree">I just published my latest
       FREE course! Click here!</a>
-  websiteLatestMessageTimestamp: 1739103430
+  websiteLatestMessageTimestamp: 1739350977
   websiteLatestVideos:
     videos:
+    - youTubeId: trLMR5aH0eQ
+      title: How to turn DOTS Singleplayer into Multiplayer! (Netcode for Entities)
     - youTubeId: DiXQJXz8FOM
       title: TOP 10 C# things you MIGHT not know (I didn't!)
     - youTubeId: 7xYkle9adR8
@@ -48,6 +50,4 @@ MonoBehaviour:
     - youTubeId: -3EVvJ8kr1U
       title: Learn Netcode for Entities (FREE Course, SUPER FAST Multiplayer with
         Unity DOTS)
-    - youTubeId: O7ta2WObdxc
-      title: Another FREE Course Incoming!
-  websiteLatestVideosTimestamp: 1739103430
+  websiteLatestVideosTimestamp: 1739350977
