@@ -3,7 +3,7 @@ using UnityEngine;
 public class CuttingCounter : BaseCounter
 {
     [SerializeField] private CuttingRecipeSO[]  cuttingRecipesSOArray;
-
+    private int cuttingProgress;
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -13,6 +13,7 @@ public class CuttingCounter : BaseCounter
                 if (HasRecipeWithInput(player.GetKitchenObject().GetKitchenObjectSo()))
                 {
                     player.GetKitchenObject().SetKitchenObjectParent(this);
+                    cuttingProgress = 0;
                 }
             
             }
@@ -34,20 +35,23 @@ public class CuttingCounter : BaseCounter
     {
         if (HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectSo()))
         {
-            KitchenObjectSO outputKitchenObjectSO =  GetOutputForInput(GetKitchenObject().GetKitchenObjectSo());
-            GetKitchenObject().DestorySelf();
-            KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
+            cuttingProgress++;
+            CuttingRecipeSO cuttingRecipeSO =  GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSo());
+            if (cuttingProgress >= cuttingRecipeSO.cuttingProgressMax)
+            {
+                KitchenObjectSO outputKitchenObjectSO =  GetOutputForInput(GetKitchenObject().GetKitchenObjectSo());
+                GetKitchenObject().DestorySelf();
+                KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
+            }
         }
     }
     
     private  KitchenObjectSO GetOutputForInput(KitchenObjectSO input)
     {
-        foreach (CuttingRecipeSO cuttingRecipeSO in cuttingRecipesSOArray)
+        CuttingRecipeSO cuttingRecipeSO =  GetCuttingRecipeSOWithInput(input);
+        if (cuttingRecipeSO != null)
         {
-            if (cuttingRecipeSO.input == input)
-            {
-                return cuttingRecipeSO.output;
-            }
+            return cuttingRecipeSO.output;
         }
 
         return null;
@@ -55,15 +59,21 @@ public class CuttingCounter : BaseCounter
 
     private bool HasRecipeWithInput(KitchenObjectSO input)
     {
+        CuttingRecipeSO cuttingRecipeSO =  GetCuttingRecipeSOWithInput(input);
+        return cuttingRecipeSO != null;
+    }
+
+
+    private CuttingRecipeSO GetCuttingRecipeSOWithInput(KitchenObjectSO inputKitchenObjectSO)
+    {
         foreach (CuttingRecipeSO cuttingRecipeSO in cuttingRecipesSOArray)
         {
-            if (cuttingRecipeSO.input == input)
+            if (cuttingRecipeSO.input == inputKitchenObjectSO)
             {
-                return true;
+                return cuttingRecipeSO;
             }
         }
-
-        return false;
+        return null;
     }
-    
+
 }
