@@ -10,7 +10,11 @@ public class CuttingCounter : BaseCounter
         {
             if (player.HasKitchenObject())
             {
-                player.GetKitchenObject().SetKitchenObjectParent(this);
+                if (HasRecipeWithInput(player.GetKitchenObject().GetKitchenObjectSo()))
+                {
+                    player.GetKitchenObject().SetKitchenObjectParent(this);
+                }
+            
             }
         }
         else
@@ -28,7 +32,7 @@ public class CuttingCounter : BaseCounter
 
     public override void InteractAlternate(Player player)
     {
-        if (HasKitchenObject())
+        if (HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectSo()))
         {
             KitchenObjectSO outputKitchenObjectSO =  GetOutputForInput(GetKitchenObject().GetKitchenObjectSo());
             GetKitchenObject().DestorySelf();
@@ -48,4 +52,18 @@ public class CuttingCounter : BaseCounter
 
         return null;
     }
+
+    private bool HasRecipeWithInput(KitchenObjectSO input)
+    {
+        foreach (CuttingRecipeSO cuttingRecipeSO in cuttingRecipesSOArray)
+        {
+            if (cuttingRecipeSO.input == input)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
 }
