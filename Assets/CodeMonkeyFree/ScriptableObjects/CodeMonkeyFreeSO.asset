@@ -14,39 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.00
   subtype: kitchenchaos
-  lastShownTimestamp: 1739533641
+  lastShownTimestamp: 1739620208
   lastUpdateResponse:
     version: 1.00
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1739533641
+  checkedLastUpdateTimestamp: 1739620208
   lastQOTDResponse:
-    questionId: 150
-    questionText: Can you modify transform.forward directly to rotate a transform?
-    answerA: Yes
-    answerB: No
-    answerC: 
+    questionId: 151
+    questionText: What will happen on January 19, 2038 at 03:14:07?
+    answerA: Armagedon
+    answerB: End of Unix Time
+    answerC: Half-Life 3 release date
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1739533641
+  lastQotdTimestamp: 1739620208
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/syntySaleFeb25.png
     topText: Get AWESOME Low Poly Assets 70% OFF! Every theme imaginable!
     topLink: syntystore
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1739533641
+  lastDynamicHeaderTimestamp: 1739620208
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/tictactoenfefree">I just published my latest
       FREE course! Click here!</a>
-  websiteLatestMessageTimestamp: 1739533641
+  websiteLatestMessageTimestamp: 1739620208
   websiteLatestVideos:
     videos:
+    - youTubeId: 2H4ouL4bCUs
+      title: AI is creating illiterate programmers! (you?)
     - youTubeId: n8xZ1zWLjaE
       title: TOP 10 NEW Games, Made with Unity! (JANUARY 2025)
     - youTubeId: trLMR5aH0eQ
       title: How to turn DOTS Singleplayer into Multiplayer! (Netcode for Entities)
     - youTubeId: DiXQJXz8FOM
       title: TOP 10 C# things you MIGHT not know (I didn't!)
-    - youTubeId: 7xYkle9adR8
-      title: TOP 20 Visual Assets to INSPIRE YOU! (JANUARY 2025)
-  websiteLatestVideosTimestamp: 1739533641
+  websiteLatestVideosTimestamp: 1739620208
