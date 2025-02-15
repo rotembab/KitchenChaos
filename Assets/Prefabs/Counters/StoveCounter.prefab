@@ -55,11 +55,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: 93af8b85a17635f40a5b76ed82a86c18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2747100816405996769}
   m_SourcePrefab: {fileID: 100100000, guid: 93af8b85a17635f40a5b76ed82a86c18, type: 3}
+--- !u!1 &18824383023139520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 17251720544094567, guid: 93af8b85a17635f40a5b76ed82a86c18, type: 3}
+  m_PrefabInstance: {fileID: 35935287091544999}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4597711173303084812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: 93af8b85a17635f40a5b76ed82a86c18, type: 3}
+  m_PrefabInstance: {fileID: 35935287091544999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4597711173303084813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: 93af8b85a17635f40a5b76ed82a86c18, type: 3}
+  m_PrefabInstance: {fileID: 35935287091544999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2747100816405996769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597711173303084813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c0c034f62c2474180d0f01bab4c415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoveCounter: {fileID: 779684205234204172}
+  stoveOnGameObject: {fileID: 18824383023139520}
+  particlesGameObject: {fileID: 5191969812125785417}
+--- !u!1 &5191969812125785417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5220305274835918574, guid: 93af8b85a17635f40a5b76ed82a86c18, type: 3}
   m_PrefabInstance: {fileID: 35935287091544999}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1367307360353006235
@@ -161,6 +194,8 @@ MonoBehaviour:
   CounterTopPoint: {fileID: 6244288792211046230}
   fryingRecipeSOArray:
   - {fileID: 11400000, guid: 2a1b6054aca0c43a38366d2e457109d6, type: 2}
+  burningRecipeSOArray:
+  - {fileID: 11400000, guid: 042a57b09414a4c04858c7da86e54ebf, type: 2}
 --- !u!4 &6244288792211046230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4922871304407682509, guid: cd28629fa24c748ea93b94e4b4b306ca, type: 3}
