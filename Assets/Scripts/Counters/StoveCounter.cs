@@ -116,6 +116,10 @@ public class StoveCounter : BaseCounter,IHasProgress
             GetKitchenObject().SetKitchenObjectParent(player);
             state = State.Idle;
             OnStoveCounterStateChanged?.Invoke(this, new StoveCounterEventArgs{state = state});
+            OnProgressChanged?.Invoke(this, new IHasProgress.ProgressChangedEventArgs
+            {
+               progressNormalized = 0f
+            });
          }
       }
    }
