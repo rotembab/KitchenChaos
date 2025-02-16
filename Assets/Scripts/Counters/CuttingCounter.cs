@@ -1,14 +1,11 @@
 using System;
 using UnityEngine;
 
-public class CuttingCounter : BaseCounter
+public class CuttingCounter : BaseCounter, IHasProgress
 {
-    public event EventHandler<CuttingProgressChangedEventArgs> OnCuttingProgressChanged;
+    public event EventHandler<IHasProgress.ProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler OnCut;
-    public class CuttingProgressChangedEventArgs : EventArgs
-    {
-        public float cuttingProgressNormalized;
-    }
+    
     [SerializeField] private CuttingRecipeSO[]  cuttingRecipesSOArray;
     private int cuttingProgress;
     public override void Interact(Player player)
@@ -23,9 +20,9 @@ public class CuttingCounter : BaseCounter
                     cuttingProgress = 0;
                     CuttingRecipeSO cuttingRecipeSO =  GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSo());
 
-                    OnCuttingProgressChanged?.Invoke(this, new CuttingProgressChangedEventArgs
+                    OnProgressChanged?.Invoke(this, new IHasProgress.ProgressChangedEventArgs
                     {
-                        cuttingProgressNormalized =  (float) cuttingProgress /  cuttingRecipeSO.cuttingProgressMax   
+                        progressNormalized =  (float) cuttingProgress /  cuttingRecipeSO.cuttingProgressMax   
                     });
                 }
             
@@ -51,9 +48,9 @@ public class CuttingCounter : BaseCounter
             cuttingProgress++;
             OnCut?.Invoke(this, EventArgs.Empty);
             CuttingRecipeSO cuttingRecipeSO =  GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSo());
-            OnCuttingProgressChanged?.Invoke(this, new CuttingProgressChangedEventArgs
+            OnProgressChanged?.Invoke(this, new IHasProgress.ProgressChangedEventArgs
             {
-                cuttingProgressNormalized =  (float) cuttingProgress /  cuttingRecipeSO.cuttingProgressMax   
+                progressNormalized =  (float) cuttingProgress /  cuttingRecipeSO.cuttingProgressMax   
             });
             if (cuttingProgress >= cuttingRecipeSO.cuttingProgressMax)
             {
