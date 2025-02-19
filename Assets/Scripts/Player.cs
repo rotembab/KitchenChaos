@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IKitchenObjectParent
 {
+    public event EventHandler OnPickup;
     public static Player Instance { get; private set; }
     [SerializeField] private float speed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private BaseCounter selectedCounter;
     
     private KitchenObject kitchenObject;
+    
     
     public class SelectedCounterChangedEventArgs : EventArgs
     {
@@ -158,6 +160,11 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.kitchenObject = kitchenObject;
+
+        if (kitchenObject != null)
+        {
+            OnPickup?.Invoke(this, EventArgs.Empty);
+        }
     }
     
     public void ClearKitchenObject()
