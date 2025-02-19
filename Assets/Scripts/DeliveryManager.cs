@@ -8,6 +8,9 @@ public class DeliveryManager : MonoBehaviour
 
    public event EventHandler OnRecipeSpawned;
    public event EventHandler OnRecipeDelivered;
+
+   public event EventHandler OnRecipeSuccess;
+   public event EventHandler OnRecipeFailed;
    
     public static DeliveryManager Instance { get; private set; }
    [SerializeField] private RecipeListSO recipeListSO;
@@ -69,6 +72,7 @@ public class DeliveryManager : MonoBehaviour
                Debug.Log("Player delivered a correct recipe");
                waitingRecipeSOList.RemoveAt(i);
                OnRecipeDelivered?.Invoke(this, EventArgs.Empty);
+               OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
                return;
             }
          }
@@ -76,6 +80,7 @@ public class DeliveryManager : MonoBehaviour
       
       // If we reach here, the plate does not match any waiting recipe
       Debug.Log("Player failed to deliver a correct recipe");
+      OnRecipeFailed?.Invoke(this, EventArgs.Empty);
    }
    
    
