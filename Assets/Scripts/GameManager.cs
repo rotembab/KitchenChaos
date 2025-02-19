@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public event EventHandler OnGameStateChanged;
     
     
     private enum State
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
                 if (waitingToStartTimer < 0f)
                 {
                     state = State.CountdownToStart;
+                    OnGameStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;
             case State.CountdownToStart: 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
                 if (countdownToStartTimer < 0f)
                 {
                     state = State.GamePlaying;
+                    OnGameStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;
             case State.GamePlaying:
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
                 if (gamePlayingTimer < 0f)
                 {
                     state = State.GameOver;
+                    OnGameStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;
             case State.GameOver:
@@ -60,5 +64,16 @@ public class GameManager : MonoBehaviour
     public bool IsGamePlaying()
     {
         return state == State.GamePlaying;
+    }
+
+    public bool IsCountdownToStartActive()
+    {
+        return state == State.CountdownToStart;
+    }
+    
+    
+    public float GetCountdownToStartTimer()
+    {
+        return countdownToStartTimer;
     }
 }
