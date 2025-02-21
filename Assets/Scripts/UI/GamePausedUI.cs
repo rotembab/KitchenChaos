@@ -1,8 +1,25 @@
  using System;
  using UnityEngine;
+ using UnityEngine.UI;
 
-public class GamePausedUI : MonoBehaviour
+ public class GamePausedUI : MonoBehaviour
 {
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private Button mainMenuButton;
+
+    private void Awake()
+    {
+        resumeButton.onClick.AddListener(() =>
+        {
+            GameManager.Instance.ToggleGamePause();
+        });
+        mainMenuButton.onClick.AddListener(() =>
+        {
+           Loader.LoadScene(Loader.Scene.MainMenuScene); 
+           
+        });
+    }
+
     private void Start()
     {
         GameManager.Instance.OnGamePaused += GameManager_OnGamePaused;
