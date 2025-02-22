@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
+    public event EventHandler OnBindChanged; 
     public enum Binding
     {
         Move_Up,
@@ -159,6 +160,7 @@ public class GameInput : MonoBehaviour
        
             PlayerPrefs.SetString(PLAYER_PREFS_BINDINGS,     playerInputSystem.SaveBindingOverridesAsJson());
             PlayerPrefs.Save();
+            OnBindChanged?.Invoke(this, EventArgs.Empty); 
         }).Start();
     }
 }
