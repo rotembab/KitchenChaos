@@ -21,7 +21,11 @@
         });
         optionsButton.onClick.AddListener(() =>
         {
-            OptionsUI.Instance.SetActive(true);
+            SetVisible(false);
+            OptionsUI.Instance.SetActive(true, () =>
+            {
+                SetVisible(true);
+            });
         });
     }
 
@@ -29,22 +33,26 @@
     {
         GameManager.Instance.OnGamePaused += GameManager_OnGamePaused;
         GameManager.Instance.OnGameResumed += GameManager_OnGameResumed;
-        setVisible(false);
+        SetVisible(false);
     }
 
     private void GameManager_OnGameResumed(object sender, EventArgs e)
     {
-        setVisible(false);
+        SetVisible(false);
         
     }
 
     private void GameManager_OnGamePaused(object sender, EventArgs e)
     {
-        setVisible(true);
+        SetVisible(true);
     }
 
-    private void setVisible(bool visible)
+    private void SetVisible(bool visible)
     {
         gameObject.SetActive(visible);
+        if (visible)
+        {
+            resumeButton.Select();
+        }
     }
 }

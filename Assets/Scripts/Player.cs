@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private bool isWalking = false;
     private Vector3 lastInteractionDir;
     private BaseCounter selectedCounter;
+    private float MinSitckInput = 0.5f;
     
     private KitchenObject kitchenObject;
     
@@ -109,7 +110,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         if (!canMove)
         {
             Vector3 moveDirX = new Vector3( moveDir.x, 0f, 0f).normalized;
-            canMove = moveDir.x!=0 && !Physics.CapsuleCast(transform.position,transform.position +Vector3.up * playerHeight,playerRadius,  moveDirX, moveDistance);
+            canMove = moveDir.x> Mathf.Abs(MinSitckInput)  && !Physics.CapsuleCast(transform.position,transform.position +Vector3.up * playerHeight,playerRadius,  moveDirX, moveDistance);
             if (canMove)
             {
                 moveDir = moveDirX;
@@ -117,7 +118,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             else
             {
                 Vector3 moveDirZ = new Vector3( 0f, 0f, moveDir.z).normalized;
-                canMove = moveDir.z!=0 && !Physics.CapsuleCast(transform.position,transform.position +Vector3.up * playerHeight,playerRadius,  moveDirZ, moveDistance);
+                canMove =  moveDir.z> Mathf.Abs(MinSitckInput) && !Physics.CapsuleCast(transform.position,transform.position +Vector3.up * playerHeight,playerRadius,  moveDirZ, moveDistance);
                 if (canMove)
                 {
                     moveDir = moveDirZ;
