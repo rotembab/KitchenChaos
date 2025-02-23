@@ -8,7 +8,7 @@
     [SerializeField] private GameObject[] visualGameObjectsArray;
     private void Start()
     {
-        Player.Instance.OnSelectedCounterChanged += PlayerOnOnSelectedCounterChanged;
+        //Player.Instance.OnSelectedCounterChanged += PlayerOnOnSelectedCounterChanged;
     }
 
     private void PlayerOnOnSelectedCounterChanged(object sender, Player.SelectedCounterChangedEventArgs e)

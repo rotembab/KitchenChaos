@@ -1,13 +1,13 @@
 using System;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IKitchenObjectParent
+public class Player : NetworkBehaviour , IKitchenObjectParent
 {
     public event EventHandler OnPickup;
-    public static Player Instance { get; private set; }
+   // public static Player Instance { get; private set; }
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float rotationSpeed = 10f;
-    [SerializeField] private GameInput gameInput;
+    [SerializeField] private float rotationSpeed = 10f; 
     [SerializeField] private LayerMask countersLayer;
     [SerializeField] private Transform kitchenObjectHoldPoint;
     private float playerRadius = 0.7f;
@@ -32,16 +32,12 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     
     private void Awake()
     { 
-        if(Instance != null)
-        {
-            Debug.LogError("There is more than one Player instance");
-        }
-        Instance = this;
+        //Instance = this;
     }
     private void Start()
     {
-        gameInput.OnInteractAction += GameInputOnOnInteractAction;
-        gameInput.OnInteractAlternateAction += GameInputOnOnInteractAlternateAction;
+        GameInput.Instance.OnInteractAction += GameInputOnOnInteractAction;
+        GameInput.Instance.OnInteractAlternateAction += GameInputOnOnInteractAlternateAction;
     }
 
     private void GameInputOnOnInteractAlternateAction(object sender, EventArgs e)
@@ -141,7 +137,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     
     private Vector3 CalcMoveDir()
     {
-        Vector2 direction = gameInput.GetMovementVectorNormalized();
+        Vector2 direction =  GameInput.Instance.GetMovementVectorNormalized();
         return new Vector3(direction.x, 0f, direction.y);
     }   
     
